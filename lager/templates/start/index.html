@@ -1,0 +1,16 @@
+{% extends 'wholedb.html' %}
+
+{% block header %}
+  <h1>{% block title %}HOME{% endblock %}</h1>
+{% endblock %}
+
+{% block navi %} 
+    {{navbttn("search", "/search")}}
+    {{navbttn("modify", "/modify")}}
+{% endblock %}  
+
+{% block content %}
+  {% block table %}
+    {{ super() }}
+  {% endblock%}
+{% endblock %}

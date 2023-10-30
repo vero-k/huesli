@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %} - LAGERHAUS</title>
+    
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    {% if request.endpoint == 'indexpage' %}
+      <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+    {% else %}
+      <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+    {% endif %}
+    
+  </head>
+  <body>
+    <div class="largest_container">
+      <div></div>
+      <div class="main_container">
+          <h1>LAGERHAUS</h1>
+          <div class="nav_container navigate">
+            {% macro navbttn(x, pathx) %}
+
+
+            <a class="btn btn-primary" href={{pathx}} role="button">{{x}}</a>
+
+            {% endmacro %}
+            {% block navi %}
+            {% endblock %} 
+        </div>
+        <section class="content">
+          {% macro viewbttn(x, pathx) %}
+
+
+            <a class="btn btn-outline-secondary btn-sm" href={{pathx}} role="button">{{x}}</a>
+
+          {% endmacro %}
+          {% block content %}{% endblock %}
+        </section>
+      </div>
+      <div></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

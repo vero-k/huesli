@@ -1,0 +1,19 @@
+
+{% extends 'wholedb.html' %}
+
+{% block header %}
+  <h1>{% block title %}MODIFY{% endblock %}</h1>
+{% endblock %}
+
+{% block navi %} 
+    {{navbttn("change", "/change")}}
+    {{navbttn("delete", "/delete")}}
+    {{navbttn("insert", "/insert")}}
+    {{navbttn("home", "/")}}
+{% endblock %}  
+
+{% block content %}
+{% block table %}
+  {{ super() }}
+{% endblock %}
+{% endblock %}

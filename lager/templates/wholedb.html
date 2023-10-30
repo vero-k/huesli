@@ -1,0 +1,67 @@
+{% from 'nav.html' import pagination_nav %}
+
+{% extends 'base.html' %}
+{{ session['showform'] == 'dont' }}
+{% block header %}
+  <h1>{% block title %}HOME{% endblock %}</h1>
+{% endblock %}
+
+{% block navi %} 
+    
+{% endblock %}  
+
+{% block table %}
+    <div class="container">
+    <div class="row">
+        <table class="table table-hover" data-toggle="table" id="table">
+            <thead>
+        
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">LAGERPLATZ</th>
+                <th scope="col" style="white-space: nowrap">PRODUKT NAME</th>
+                <th scope="col">KATEGORIE</th>
+                <th scope="col" style="white-space: nowrap" class="text-end">PREIS</th>
+                <th scope="col">DESIGNER</th>
+                <th scope="col">LABEL</th>
+                <th scope="col">AUSZIEHBAR</th>
+                <th scope="col">KLAPPBAR</th>
+                <th scope="col">LINK</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% for row in daslager.items %}
+                    <tr class="clickable-row">
+                        <th scope="row">{{ row.id }}</th>
+                        <td>{{ row.lagerplatz if row.lagerplatz else ""}}</td>
+                        <td>{{ row.produktname if row.produktname else ""}}</td>
+                        <td>{{ row.kategorie if row.kategorie else ""}}</td>
+                        <td style="white-space: nowrap" class="text-end">{{ '%0.2f CHF'| format(row.preis|float) if row.preis else ""}}</td>
+                        <td>{{ row.designer if row.designer else ""}}</td>
+                        <td>{{ row.label if row.label else ""}}</td>
+                        <td>{{ "JA" if row.ausziehbar else ""}}</td>
+                        <td>{{ "JA" if row.klappbar else ""}}</td>
+                        <td> {{ viewbttn("View", "/item?currentid=" + row.id|string)}} </td>
+                    </tr>
+                {% endfor %}
+
+                
+             
+            </tbody>
+
+
+          </table>
+
+
+          {{ pagination_nav(thisurl, currentpage, totalpages)}}
+
+
+
+        </div>
+    </div>
+    <div class="row ">
+      
+    </div>
+</div>
+{% endblock %}

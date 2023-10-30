@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask instance folder
+instance/
+
+# Flask session files
+flask_session/
+
+# If you are using SQLite
+*.sqlite
+
+# Environment variables or configuration files
+.env
+*.cfg
+
+# Virtual environment
+venv/
+*.venv
+venv.bak/
+ENV/
+
+# IDE - PyCharm, VS Code, etc.
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Database migration files
+migrations/
+
+# pipenv files (if you're using pipenv)
+Pipfile.lock
+
+# Other common files to ignore
+*.pid
+*.pot
+*.log
+*.swo
+*.swp
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.rar
+*.zip
+*.DS_Store

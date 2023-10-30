@@ -1,0 +1,93 @@
+{% extends 'wholedb.html' %}
+
+{% block header %}
+  <h1>{% block title %}SEARCH{% endblock %}</h1>
+{% endblock %}
+
+
+{% block navi %} 
+  {{navbttn("home", "/")}}
+{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+
+    <form action="/search" method="POST">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="mb-3 col">
+            <label for="produktname" class="form-label">Produkt Name</label>
+            {{ form.produktname(class='form-control') }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col">
+            <label for="lagerplatz" class="form-label">Lagerplatz</label>
+            {{ form.lagerplatz(class='form-control')}}
+            <div id="lagerplatzhelp" class="form-text"></div>
+          </div>
+
+
+          <div class="mb-3 col">
+            <label for="kategorie" class="form-label">Kategorie</label>
+            
+            {{ form.kategorie(class='form-select')}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col">
+            <label for="designer" class="form-label">Designer</label>
+            {{ form.designer(class='form-control')}}
+          </div>
+
+
+          <div class="mb-3 col">
+            <label for="label" class="form-label">Label</label>
+            {{ form.label(class='form-control')}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3">
+            <label for="preisrange" class="form-label">Preis Min.</label>
+            {{ form.preismin(class='form-control')}}
+          </div>
+          <div class="mb-3"
+            <label for="preisrange" class="form-label">Preis Max. </label>
+            {{ form.preismax(class='form-control')}}
+          </div>
+        </div>
+
+        <div class="mb-3 row ">
+          <div class="form-check col justify-content-center align-items-center">
+            {{ form.ausziehbar(class='form-check-input')}}
+            <label class="form-check-label" for="flexCheckAusziehbar">
+              Ausziehbar
+            </label>
+          </div>
+          <div class="form-check col justify-content-center align-items-center">
+            {{ form.klappbar(class='form-check-input')}}
+            <label class="form-check-label" for="flexCheckFaltbar">
+              Klappbar
+            </label>
+          </div>
+        </div>
+
+        <br/>
+        <div class="row">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+
+  </div>
+
+{% endblock %}

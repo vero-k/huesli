@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+ 
+
+{% block header %}
+
+  <h1>{% block title %}HOME{% endblock %}</h1>
+
+{% endblock %}
+
+ 
+
+{% block navi %}
+
+    {{navbttn("search", "/search")}}
+
+    {{navbttn("modify", "/modify")}}
+
+{% endblock %} 
+
+ 
+
+{% block content %}
+
+ 
+
+<div class=container>
+
+<div class="card">
+
+    <h5 class="card-header"> ID: {{ current.id }} </h5>
+
+    <div class="card-body">
+
+      <h5 class="card-title produktnametitel"> PRODUKT: {{ current.produktname.upper() }} </h5>
+
+
+
+      <ul class="list-group">
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="ms-2 me-auto">
+
+            <div class="fw-bold"> LAGERPLATZ </div>
+
+            {{ current.lagerplatz if current.lagerplatz else "NO INFO" }} 
+
+          </div>
+
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="ms-2 me-auto">
+
+            <div class="fw-bold">KATEGORIE</div>
+
+            {{ current.kategorie if current.kategorie else "NO INFO"}}
+
+          </div>
+
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="ms-2 me-auto">
+
+            <div class="fw-bold">DESIGNER</div>
+
+            {{ current.designer if current.designer else "NO INFO"}}
+
+          </div>
+
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class="ms-2 me-auto">
+
+              <div class="fw-bold">LABEL</div>
+
+              {{ current.label if current.label else "NO INFO"}}
+
+            </div>
+
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class="ms-2 me-auto">
+
+              <div class="fw-bold">PREIS</div>
+
+              {{ current.preis if current.preis else "NO INFO" }}
+
+            </div>
+
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class="ms-2 me-auto">
+
+              <div class="fw-bold">AUSZIEHBAR</div>
+
+              {{ "JA" if current.ausziehbar else "NEIN" }}
+
+            </div>
+
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class="ms-2 me-auto">
+
+              <div class="fw-bold">KLAPPBAR</div>
+
+              {{ "JA" if current.klappbar else "NEIN" }}
+
+            </div>
+
+          </li>
+
+      </ul>
+
+      <br>
+
+     
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

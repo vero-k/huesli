@@ -1,0 +1,82 @@
+{% from 'nav.html' import pagination_nav %}
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}CHANGE{% endblock %}</h1>
+{% endblock %}
+
+{% block navi %} 
+    {{navbttn("insert", "/insert")}}
+    {{navbttn("delete", "/delete")}}
+    {{navbttn("home", "/")}}
+
+{% endblock %}  
+
+{% block content %}
+    
+
+    <div class="container">
+            <div class="container">
+              <div class="row">
+                  <form action="/change" method="POST">
+                  <table class="table table-hover">
+                      
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">CHANGE</th>
+                          <th scope="col">LAGERPLATZ</th>
+                          <th scope="col" style="white-space: nowrap">PRODUKT NAME</th>
+                          <th scope="col">KATEGORIE</th>
+                          <th scope="col" class="text-end" tyle="white-space: nowrap">PREIS</th>
+                          <th scope="col">DESIGNER</th>
+                          <th scope="col">LABEL</th>
+                          <th scope="col">AUSZIEHBAR</th>
+                          <th scope="col">KLAPPBAR</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          
+                          {% for row in daslager.items %}
+                              <tr>
+                                  <th scope="row">{{ row.id }}</th>
+                                  <th scope="col">
+          
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="radio" name="radiobttn" value={{ row.id }}>
+                                    </div>
+                
+                                  </th>
+                                  <td>{{ row.lagerplatz if row.lagerplatz else ""}}</td>
+                                  <td>{{ row.produktname if row.produktname else ""}}</td>
+                                  <td>{{ row.kategorie if row.kategorie else ""}}</td>
+                                  <td style="white-space: nowrap" class="text-end">{{ '%0.2f CHF'| format(row.preis|float) if row.preis else ""}}</td>
+                                  <td>{{ row.designer if row.designer else ""}}</td>
+                                  <td>{{ row.label if row.label else ""}}</td>
+                                  <td>{{ "JA" if row.ausziehbar else ""}}</td>
+                                  <td>{{ "JA" if row.klappbar else ""}}</td>
+                              </tr>
+                          {% endfor %}
+          
+                          
+                       
+                      </tbody>
+          
+          
+                    </table>
+                    <button type="submit" class="btn btn-primary">To Be Changed</button>
+                  </form>
+    
+                
+                {{ pagination_nav(thisurl, currentpage, totalpages)}}
+
+
+                  </div>
+              </div>
+              
+          </div>
+            
+ 
+        
+    </div>
+{% endblock %}

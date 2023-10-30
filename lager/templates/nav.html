@@ -1,0 +1,99 @@
+{% macro pagination_nav(thisurl, currentpage, totalpages) %}
+
+        <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+
+            <li class="page-item">
+                <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=1) }}">{{ '<<' }}</a>
+            </li>
+
+            {% if currentpage == 1 %}
+                <li class="page-item">
+                    <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=1) }}">{{ '<' }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=currentpage-1) }}">{{ '<' }}</a>
+                </li>
+            {% endif %}
+
+            {% if totalpages < 5 %}
+
+                {% for p in range(1, totalpages+1) %}
+                    {%if p == currentpage %}
+                        <li class="page-item active">
+                        <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                        <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            
+            {% else %}
+                
+                {% if currentpage < 3 %}
+
+                    {% for p in range(1, 6) %}
+                        {%if p == currentpage %}
+                            <li class="page-item active">
+                                <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                {% elif currentpage > totalpages - 2 %}
+                    {% for p in range(totalpages - 4, totalpages + 1) %}
+                        {%if p == currentpage %}
+                        <li class="page-item active">
+                            <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+
+                {% for p in range(currentpage - 2, currentpage + 3) %}
+                    {%if p == currentpage %}
+                        <li class="page-item active">
+                        <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                        </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=p) }}">{{ p }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                
+                {% endif %}
+            {% endif %}
+
+
+            {% if currentpage == totalpages %}
+                <li class="page-item">
+                    <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=totalpages) }}">{{ '>' }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=currentpage+1) }}">{{ '>' }}</a>
+                </li>
+            {% endif %}
+
+        <li class="page-item">
+            <a class="btn btn-outline-info mb-4 page-link" href="{{ url_for(thisurl, page=totalpages) }}">{{ '>>' }}</a>
+        </li>
+
+
+
+        </ul>
+        </nav>
+{% endmacro %}
