@@ -3,6 +3,10 @@ from re import T
 from lager import db
 from .models import Ware
 
+import sqlite3
+
+import click
+from flask import current_app, g
 
 
 def insert_Ware(db):
