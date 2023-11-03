@@ -3,9 +3,8 @@ from flask import Blueprint, render_template, request, redirect, url_for, redire
 
 from .forms import InsertForm, ChangeForm, SearchForm
 
-from lager import db
-from .models import Ware
-from .db import searchQuery
+from lager import db, ma, Ware
+from .filldb import searchQuery
 
 
 ROWS_PER_PAGE = 10

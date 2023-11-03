@@ -20,22 +20,32 @@
     <div class="largest_container">
       <div></div>
       <div class="main_container">
-          <h1>LAGERHAUS</h1>
-          <div class="nav_container navigate">
-            {% macro navbttn(x, pathx) %}
-
-
-            <a class="btn btn-primary" href={{pathx}} role="button">{{x}}</a>
-
-            {% endmacro %}
-            {% block navi %}
-            {% endblock %} 
-        </div>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <h1>LAGERHAUS</h1>
+            </div>
+          </nav>
+      </div>
+      <div class="main_container"> 
+          <nav class="navbar navbar-expand-lg navbar-light bg-light navbarbttns">
+            <div class="nav_container navigate">
+              {% macro navbttn(x, pathx) %}
+  
+  
+              <a class="btn btn-outline-info mx-2" href={{pathx}} role="button">{{x}}</a>
+  
+              {% endmacro %}
+              {% block navi %}
+              {% endblock %} 
+          </div>
+          </nav>
+      </div>
+          
         <section class="content">
           {% macro viewbttn(x, pathx) %}
 
 
-            <a class="btn btn-outline-secondary btn-sm" href={{pathx}} role="button">{{x}}</a>
+            <a class="btn btn-outline-info btn-sm" href={{pathx}} role="button">{{x}}</a>
 
           {% endmacro %}
           {% block content %}{% endblock %}

@@ -1,7 +1,7 @@
 import click
 from flask.cli import with_appcontext
 from .models import db, Ware  # Assuming your models are in a separate file named models.py
-from .db import insert_Ware
+from .filldb import insert_Ware
 
 @click.command('init-db')
 @with_appcontext
