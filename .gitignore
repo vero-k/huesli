@@ -33,8 +33,6 @@ logs/
 # Database migration files
 migrations/
 
-# pipenv files (if you're using pipenv)
-Pipfile.lock
 
 # Other common files to ignore
 *.pid

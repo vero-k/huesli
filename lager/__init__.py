@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, request, url_for, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from .config import DevConfig 
+from .config import DevConfig, ProdConfig 
 from .forms import InsertForm, ChangeForm, SearchForm
 
 db = SQLAlchemy()
@@ -41,10 +41,10 @@ ware_schema = WareSchema()
 wares_schema = WareSchema(many=True)
 
 
-def create_app(config_class=DevConfig):
+def create_app(config_class=ProdConfig):
 
     app = Flask(__name__)
-    app.config.from_object(DevConfig)
+    app.config.from_object(ProdConfig)
 
     db.init_app(app)
 
