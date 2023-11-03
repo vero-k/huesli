@@ -26,6 +26,9 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
+# Expose the port the app runs on
+EXPOSE $PORT
+
 # Run the application using pipenv to ensure the correct Python environment
 # CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "huesli:app"]
+CMD ["gunicorn", "-b", :$PORT, "app:app"]
