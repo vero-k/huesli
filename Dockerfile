@@ -28,4 +28,4 @@ ENV FLASK_ENV=production
 
 # Run the application using pipenv to ensure the correct Python environment
 # CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "myapp:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "huesli:app"]
