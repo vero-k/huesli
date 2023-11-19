@@ -19,7 +19,7 @@
     Flask: A lightweight WSGI web application framework in Python, providing tools, libraries, and technologies for building web applications.
     HTML/CSS: For structuring and styling the web interface.
     Database Management System: A backend database to store and manage the furniture data efficiently.
-
+    
 
 <h2> Installation and Setup </h2>
 
@@ -28,4 +28,18 @@ cd [local repository]
 pip install pipenv
 
 
+
+<h2> Running Application Locally </h2>
+
+<h3>with Docker</h3>
+# modify Dockerfile, by replacing last command with
+CMD ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
+
+docker build -t huesli .
+docker run -p 5000:5000 huesli
+
+<h3>without Docker</h3>
+pipenv shell
+pipenv install 
+flask run
 
